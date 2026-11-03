@@ -1,0 +1,1 @@
+Still Standing Studioz music folder. Audio files uploaded into this folder (MP3, M4A, OGG, or WAV) appear automatically as playable tracks on The Music page (music.html). Name files like "01 - Song Title.mp3" to set the order and the displayed title.
