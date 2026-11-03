@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Music — Still Standing Studioz | James Albert Bosarge Jr</title>
-<meta name="description" content="The Music — every song from Still Standing Studioz, the studio of James Albert Bosarge Jr, Still Standing Records. Press play.">
+<meta name="description" content="The Music — every finished single by James Albert Bosarge Jr, made at Still Standing Studioz. Press play.">
 <style>
   :root{--navy:#0b2545;--navy2:#13315c;--gold:#c9a227;--gold2:#e8c95a;--ink:#1c2430;--paper:#fdfbf5;--line:#e3ddc9}
   *{box-sizing:border-box}
@@ -18,6 +18,7 @@
   .btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;padding:.7rem 1.3rem;border-radius:8px;margin:.3rem .3rem .3rem 0;font-weight:bold}
   .btn.gold{background:var(--gold);color:var(--navy)}
   .track{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;margin:0 0 1rem}
+  .track img{width:100%;height:auto;border-radius:6px;margin-bottom:.6rem;display:block}
   .track h3{margin:.1rem 0 .5rem;color:var(--navy);font-size:1.15rem}
   .track audio{width:100%}
   footer{background:var(--navy);color:#e8e0c8;text-align:center;padding:1.4rem 1rem;font-size:.95rem}
@@ -29,13 +30,13 @@
 <header>
   <p class="brand">Thank God first</p>
   <h1>The Music</h1>
-  <p class="sub">Every song from Still Standing Studioz — James Albert Bosarge Jr, Still Standing Records.</p>
+  <p class="sub">Every finished single — made at Still Standing Studioz.</p>
 </header>
 <main>
   <h2>Press play</h2>
-  <p>The whole body of work, in order, under one roof. This list builds
-  itself from the studio's music folder: when a song is added, it shows up
-  on this page.</p>
+  <p>These are the finished singles, in order, straight from the studio.
+  This list builds itself from the studio's music folder: when a song is
+  added, it shows up on this page with its cover.</p>
 
   <div id="tracks"><p class="small">Loading the music…</p></div>
 
@@ -49,7 +50,7 @@
   </p>
 </main>
 <footer>
-  <p><span class="gold">STILL STANDING STUDIOZ</span> — the studio of James Albert Bosarge Jr, Still Standing Records.</p>
+  <p><span class="gold">STILL STANDING STUDIOZ</span> — the studio arm of Still Standing Records, under Still Standing Enterprises Productions and Products.</p>
   <p>Pass this page to somebody who needs a song.</p>
 </footer>
 <script>
@@ -72,20 +73,24 @@
       songs.forEach(function (s) {
         var card = document.createElement("div");
         card.className = "track";
+        var img = document.createElement("img");
+        img.src = "covers/" + s.name.replace(/\.[^.]+$/, "") + ".jpg";
+        img.alt = titleOf(s.name) + " — cover";
+        img.onerror = function () { img.style.display = "none"; };
         var h = document.createElement("h3");
         h.textContent = titleOf(s.name);
         var a = document.createElement("audio");
         a.controls = true;
         a.preload = "none";
         a.src = s.download_url;
+        card.appendChild(img);
         card.appendChild(h);
         card.appendChild(a);
         box.appendChild(card);
       });
     })
     .catch(function () {
-      box.innerHTML = "<p>The music loads here. The first songs are on their way — " +
-        "when a track is dropped in the studio's music folder, it plays on this page.</p>";
+      box.innerHTML = "<p>The music loads here. When a track is dropped in the studio's music folder, it plays on this page.</p>";
     });
 })();
 </script>
